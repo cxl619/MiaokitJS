@@ -6,15 +6,30 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="//unpkg.com/docsify/themes/vue.css">
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
 </head>
 
 <body>
     <div id="app"></div>
+     <div id="gitalk-container"></div> 
     <script>
         window.$docsify = {
             loadSidebar: 'sidebar.md',
             subMaxLevel: 3
         }
+        
+        var gitalk = new Gitalk({
+          clientID: '03f1ed3f2c223473a996', // GitHub Application Client ID
+          clientSecret: '52ea4f6ba344f27120123367c90e61f52345221a', // GitHub Application Client Secret
+          repo: 'new',      // 存放评论的仓库
+          owner: 'cxl619',          // 仓库的创建者，
+          admin: ['cxl619'],        // 如果仓库有多个人可以操作，那么在这里以数组形式写出
+        //   id: location.pathname,      // 用于标记评论是哪个页面的，确保唯一，并且长度小于50
+              id: window.location.pathname,
+        })
+
+        gitalk.render('gitalk-container');    // 渲染Gitalk评论组件
     </script>
     <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
 </body>
